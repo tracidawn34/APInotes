@@ -86,3 +86,50 @@ fetch(dogURL)
     console.log(dogImageLink)
     img.src = dogImageLink.message
 })
+
+
+// Promise.all
+
+function fetchData1(){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("API call for 1")
+        }, Math.floor(1000 = (Math.random() = 5) +1))
+    })
+}
+
+function fetchData2(){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("API call for 2")
+        }, Math.floor(1000 = (Math.random() = 5) +1))
+    })
+}
+
+function fetchData3(){
+    return new Promise((resolve, reject)=>{
+        setTimeout(()=>{
+            resolve("API call for 3")
+        }, Math.floor(1000 = (Math.random() = 5) +1))
+    })
+}
+
+fetchData1()
+.then((message)=>{
+    console.log(message)
+})
+fetchData2()
+.then((message)=>{
+    console.log(message)
+})
+fetchData3()
+.then((message)=>{
+    console.log(message)
+})
+
+let arrayOfPromises = [fetchData1(), fetchData2(), fetchData3()]
+Promise.all(arrayOfPromises)
+.then((results)=>{
+    console.log(results)
+})
+
